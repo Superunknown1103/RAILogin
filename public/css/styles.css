@@ -12,6 +12,7 @@
 .RAIlogo {
     margin-top: 3%;
     margin-left: 3%;
+    position: absolute;
 }
 
 .navLink {
@@ -25,4 +26,30 @@
 
 .navLink :hover {
     cursor: pointer;
+}
+
+.customerLogin {
+    text-align: center; 
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+.loginBox {
+    font-size: 20px !important;
+    background-color: gray;
+    padding-top: 5%;
+    padding-bottom: 40%;
+}
+
+input {
+    margin-top: 2%;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.newUser {
+    font-size: 15px !important;
 }
