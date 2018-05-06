@@ -1,0 +1,28 @@
+.logoAreaBar {
+    background-color: white;
+}
+
+.navBar {
+    background-color: #950516;
+    font-family: 'Nunito Sans', sans-serif;
+    border-left: 5px solid black;
+    border-bottom: 5px solid black;
+}
+
+.RAIlogo {
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.navLink {
+    text-align: center;
+    color: white;
+    align-content: center;
+    top: 1%;
+    padding: 2%;
+    font-size: 20px;
+}
+
+.navLink :hover {
+    cursor: pointer;
+}
