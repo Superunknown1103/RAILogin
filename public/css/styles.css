@@ -3,10 +3,8 @@
 }
 
 .navBar {
-    background-color: #950516;
+    background-color: transparent;
     font-family: 'Nunito Sans', sans-serif;
-    border-left: 5px solid black;
-    border-bottom: 5px solid black;
 }
 
 .RAIlogo {
@@ -17,14 +15,13 @@
 
 .navLink {
     text-align: center;
-    color: white;
-    align-content: center;
+    color: #900313;
+    margin-left: -5%;
     top: 1%;
     padding: 2%;
-    font-size: 20px;
-}
-
-.navLink :hover {
+    font-size: 25px;
+    text-decoration: underline;
+    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -37,17 +34,27 @@
 
 .loginBox {
     font-size: 20px !important;
-    background-color: gray;
+    /* background-color: gray; */
     padding-top: 5%;
-    padding-bottom: 40%;
+    padding-bottom: 30%;
 }
 
-input {
+input, .newUser {
     margin-top: 2%;
+    padding: 2px;
+}
+
+.newUser {
+    text-decoration: underline;
 }
 
 body {
     font-family: 'Nunito Sans', sans-serif;
+    background-image: url("../backgroundlogin.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 60% 40%;
+    background-position: left 50% top;
 }
 
 .newUser {
