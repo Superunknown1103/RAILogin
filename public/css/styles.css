@@ -15,14 +15,36 @@
 
 .navLink {
     text-align: center;
-    color: #900313;
-    margin-left: -5%;
+    color: #900313 !important;
     top: 1%;
     padding: 2%;
     font-size: 25px;
     text-decoration: underline;
     border-radius: 50%;
     cursor: pointer;
+}
+
+a {
+    color: #900313 !important;
+}
+.homeNav {
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    border: 2px solid black;
+}
+
+.n2 {
+    margin-left: -5%;
+}
+
+.n3 {
+    text-align: right !important;
+    left: 25%;
+}
+
+.n3fix {
+    margin-right: -6%;
 }
 
 .customerLogin {
@@ -48,7 +70,7 @@ input, .newUser {
     text-decoration: underline;
 }
 
-body {
+.indexBody {
     font-family: 'Nunito Sans', sans-serif;
     background-image: url("../backgroundlogin.jpg");
     background-size: 100%;
@@ -57,7 +79,19 @@ body {
     background-color: #F8F9FD;
 }
 
+.homeBody {
+    font-family: 'Nunito Sans', sans-serif;
+    background-image: url("../lightbackground.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
 .newUser {
     font-size: 20px !important;
     cursor: pointer;
+}
+
+.downloadLink {
+    font-size: 20px !important;
+    margin-top: 2%;
 }
