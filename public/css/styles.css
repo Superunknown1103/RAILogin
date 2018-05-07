@@ -102,4 +102,9 @@ input, .newUser {
 
 .submitA {
     margin-top: 2%;
+    cursor: pointer;
+}
+
+.email {
+    margin-left: 5%;
 }
