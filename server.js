@@ -8,7 +8,21 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var moment = require('moment');
+var firebase = require('firebase');
 moment().format();
+
+// Firebase Configuration
+// =============================================================
+
+var config = {
+  apiKey: "AIzaSyClzWbBCXJB1Fni8HnIhjtzaV8mf5E5jOw",
+  authDomain: "railogin-cb34b.firebaseapp.com",
+  databaseURL: "https://railogin-cb34b.firebaseio.com",
+  projectId: "railogin-cb34b",
+  storageBucket: "railogin-cb34b.appspot.com",
+  messagingSenderId: "58650909091"
+};
+firebase.initializeApp(config);
 
 // Sets up the Express App
 // =============================================================
