@@ -1,6 +1,7 @@
 $(document).ready(function(){
-      
+      var submit = false;
     $('#completed').click(function(){
+        if (submit == false){
         var password = $('#newPass').val();
         var email = $('#email').val();
         var password2 = $('#newPassRepeat').val();
@@ -12,15 +13,18 @@ $(document).ready(function(){
             if (password !== password2){
                 alert('Passwords do not match!')
             } else {
-                alert('User registration was sucessful.');
                 firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
                     // Handle Errors Here
                     var errorCode = error.code;
-                    var errorMessage = error.message;
+                    if (error) {
                     alert(error.message);
+                    }
+                    submit = true;
                 });
             }
     }
+} else if (submit == true){
+    window.location.pathname = "/home.html";
+}
 });
-
 });
