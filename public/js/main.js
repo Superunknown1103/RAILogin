@@ -1,4 +1,15 @@
 $(document).ready(function(){
+
+    var config = {
+        apiKey: "AIzaSyClzWbBCXJB1Fni8HnIhjtzaV8mf5E5jOw",
+        authDomain: "railogin-cb34b.firebaseapp.com",
+        databaseURL: "https://railogin-cb34b.firebaseio.com",
+        projectId: "railogin-cb34b",
+        storageBucket: "railogin-cb34b.appspot.com",
+        messagingSenderId: "58650909091"
+      };
+      firebase.initializeApp(config);
+
     $('#completed').click(function() {
         var password = $('#newPass').val();
         var email = $('#email').val();
@@ -19,10 +30,29 @@ $(document).ready(function(){
                     return;
                     }
                     }).then(function(){
-                    // var confirm = confirm('New user created successfully!')
-                    window.location.pathname = "/home.html"
+                    sessionStorage.setItem('userId', email);
+                    createUser(email)
+                    // window.location.pathname = "/home.html"
                 })
             }
             }
         });
+        
+
+function createUser(userId){
+    var firebaseDB = firebase.database().ref();
+    var email = userId;
+    var videos = 
+    {HostedVid1:"n/a", 
+    HostedVid2:"n/a", 
+    email:email,
+    allowedDownload: 'no',
+    allowedHost: 'no',
+    DownloadLink1: "n/a",
+    DownloadLink2: "n/a"
+};
+    var user = sessionStorage.getItem('userId');
+    string1 = 'string1';
+    firebaseDB.child(string1).set(videos);
+};
 });
