@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+        // firebase configuration
     var config = {
         apiKey: "AIzaSyClzWbBCXJB1Fni8HnIhjtzaV8mf5E5jOw",
         authDomain: "railogin-cb34b.firebaseapp.com",
@@ -10,6 +11,7 @@ $(document).ready(function(){
       };
       firebase.initializeApp(config);
 
+      // creating new user
     $('#completed').click(function() {
         var password = $('#newPass').val();
         var email = $('#email').val();
@@ -30,29 +32,68 @@ $(document).ready(function(){
                     return;
                     }
                     }).then(function(){
-                    sessionStorage.setItem('userId', email);
-                    createUser(email)
-                    // window.location.pathname = "/home.html"
+                    var businessName = $('#businessName').val();
+                    sessionStorage.setItem('userId', businessName);
+                    createUser(email, businessName);
+                    setTimeout(function(){
+                    window.location.pathname = "/home.html"
+                    }, 3000);
                 })
             }
             }
         });
-        
 
-function createUser(userId){
+        // Logging user In
+        $('.submitA').click(function(){
+            var businessName = $('.frontBus').val();
+            sessionStorage.setItem('userId', businessName)
+            fetchEmailfromFirebase(businessName);
+        });
+
+        // get user email for authentication based on business Name
+        function fetchEmailfromFirebase(businessName){
+            var firebaseDB = firebase.database().ref(businessName + '/email');
+            firebaseDB.on('value', function(snapshot){
+                var email = snapshot.val();
+                var password = $('.frontPass').val();
+                if (email){
+                    logInUser(email, password);
+                } else {
+                    alert("Please check that business name and/or password are correct!");
+                }
+            });
+        };
+        
+        // authenticate and redirect to video page
+        function logInUser(email, password){
+            firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+            var errorCode = error.code;
+            if (error.message) {
+                alert(error.message);
+                return;
+            }
+          }).then(function(){
+            setTimeout(function(){
+             window.location.pathname = "/home.html"
+                    }, 3000);
+                });
+         };
+
+ // Creating user in database
+function createUser(email, businessName){
+
     var firebaseDB = firebase.database().ref();
-    var email = userId;
     var videos = 
-    {HostedVid1:"n/a", 
+    {
+    HostedVid1:"n/a", 
     HostedVid2:"n/a", 
-    email:email,
+    email: email,
     allowedDownload: 'no',
     allowedHost: 'no',
     DownloadLink1: "n/a",
     DownloadLink2: "n/a"
 };
     var user = sessionStorage.getItem('userId');
-    string1 = 'string1';
-    firebaseDB.child(string1).set(videos);
+    firebaseDB.child(businessName).set(videos);
 };
 });
