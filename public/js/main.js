@@ -81,7 +81,6 @@ $(document).ready(function(){
 
  // Creating user in database
 function createUser(email, businessName){
-
     var firebaseDB = firebase.database().ref();
     var videos = 
     {
@@ -96,4 +95,17 @@ function createUser(email, businessName){
     var user = sessionStorage.getItem('userId');
     firebaseDB.child(businessName).set(videos);
 };
+
+
+// functions that should run once user has logged in
+if (window.location.pathname == "/home.html") {
+    var userInfo;
+    var businessName = sessionStorage.getItem('userId');
+    $('.loggedIn').html(businessName);
+
+    var firebaseDB = firebase.database().ref(businessName);
+        firebaseDB.on('value', function(snapshot){
+            userInfo = snapshot.val();
+        });
+    };
 });
