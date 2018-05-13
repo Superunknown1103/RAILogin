@@ -14,14 +14,15 @@ $(document).ready(function(){
                 firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
                     // Handle Errors Here
                     var errorCode = error.code;
-                    if (error) {
+                    if (error.message) {
                     alert(error.message);
+                    return;
                     }
-
-                }).done(
+                    }).then(function(){
+                    // var confirm = confirm('New user created successfully!')
                     window.location.pathname = "/home.html"
-                )
+                })
             }
-        }
-});
+            }
+        });
 });
