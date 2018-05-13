@@ -1,7 +1,5 @@
 $(document).ready(function(){
-      var submit = false;
-    $('#completed').click(function(){
-        if (submit == false){
+    $('#completed').click(function() {
         var password = $('#newPass').val();
         var email = $('#email').val();
         var password2 = $('#newPassRepeat').val();
@@ -19,12 +17,11 @@ $(document).ready(function(){
                     if (error) {
                     alert(error.message);
                     }
-                    submit = true;
-                });
+
+                }).done(
+                    window.location.pathname = "/home.html"
+                )
             }
-    }
-} else if (submit == true){
-    window.location.pathname = "/home.html";
-}
+        }
 });
 });
