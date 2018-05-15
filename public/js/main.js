@@ -111,7 +111,11 @@ function createUser(email, businessName, password, fullAddress, phone, zip, desc
     nextBillDate: nextBillDate
 };
     // var user = sessionStorage.getItem('userId');
-    firebaseDB.child(businessName).set(businessInfo);
+    firebaseDB.child(businessName).set(businessInfo).catch(function(error){
+        if (error){
+            alert(err.message)
+        }
+    }.done(alert(businessName + ' has been created sucessfully.')));
 };
 
 
