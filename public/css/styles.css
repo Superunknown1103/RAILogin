@@ -19,9 +19,12 @@
     top: 1%;
     padding: 2%;
     font-size: 25px;
-    text-decoration: underline;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.navLink :hover {
+    text-decoration: underline;
 }
 
 a {
@@ -66,14 +69,10 @@ input, .newUser {
     padding: 2px;
 }
 
-.newUser {
-    text-decoration: underline;
-}
-
 .indexBody {
     font-family: 'Nunito Sans', sans-serif;
     background-image: url("../backgroundlogin.jpg");
-    background-size: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: left 5vw top;
     background-color: #F8F9FD;
@@ -96,15 +95,27 @@ input, .newUser {
     margin-top: 2%;
 }
 
-.repeat {
-    margin-left: -8.9%;
-}
-
 .submitA {
     margin-top: 2%;
     cursor: pointer;
 }
 
-.email {
-    margin-left: 5%;
+form label {
+        display: inline-block;
+        width:  10vw;
+        text-align: right;
+        margin-right: 1vw;
+        margin-left: -10.5vw;
+}
+
+form a {
+    margin-left: -1vw;
+}
+
+form a :hover {
+    text-decoration: underline;
+}
+
+#completed {
+    margin-left: -1vw;
 }
