@@ -108,11 +108,27 @@ form label {
         margin-left: -10.5vw;
 }
 
+.generate label {
+    display: inline-block;
+    width:  10vw;
+    text-align: right;
+    margin-right: 1vw;
+    margin-left: -10.5vw;
+}
+
 form a {
     margin-left: -1vw;
 }
 
+.generate a {
+    margin-left: -1vw;
+}
+
 form a :hover {
+    text-decoration: underline;
+}
+
+.generate a :hover {
     text-decoration: underline;
 }
 

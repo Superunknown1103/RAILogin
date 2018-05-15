@@ -16,6 +16,15 @@ $(document).ready(function(){
         var password = $('#newPass').val();
         var email = $('#email').val();
         var password2 = $('#newPassRepeat').val();
+        var businessName = $('#businessName').val();
+        var fullAddress = $('#address').val();
+        var phone = $('#phone').val();
+        var zip = $('#zip').val();
+        var description = $('#description').val();
+        var status = $('#status').val();
+        var bill = $('#bill').val();
+        var balance = $('#balance').val();
+        var nextBillDate = $('#nextBillDate').val();
 
         if ((password == '') || (password2 == '') || (email == '')) {
             alert('Please fill out all fields!');
@@ -32,12 +41,12 @@ $(document).ready(function(){
                     return;
                     }
                     }).then(function(){
-                    var businessName = $('#businessName').val();
                     sessionStorage.setItem('userId', businessName);
-                    createUser(email, businessName);
-                    setTimeout(function(){
-                    window.location.pathname = "/home.html"
-                    }, 3000);
+                    createUser(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate);
+                    console.log(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate);
+                    // setTimeout(function(){
+                    // window.location.pathname = "/home.html"
+                    // }, 3000);
                 })
             }
             }
@@ -80,9 +89,9 @@ $(document).ready(function(){
          };
 
  // Creating user in database
-function createUser(email, businessName){
+function createUser(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate) {
     var firebaseDB = firebase.database().ref();
-    var videos = 
+    var businessInfo = 
     {
     HostedVid1:"n/a", 
     HostedVid2:"n/a", 
@@ -90,10 +99,19 @@ function createUser(email, businessName){
     allowedDownload: 'no',
     allowedHost: 'no',
     DownloadLink1: "n/a",
-    DownloadLink2: "n/a"
+    DownloadLink2: "n/a",
+    // password: password,
+    fullAddress: fullAddress,
+    phone: phone,
+    zip: zip,
+    description: description,
+    status: status,
+    bill: bill,
+    balance: balance,
+    nextBillDate: nextBillDate
 };
-    var user = sessionStorage.getItem('userId');
-    firebaseDB.child(businessName).set(videos);
+    // var user = sessionStorage.getItem('userId');
+    firebaseDB.child(businessName).set(businessInfo);
 };
 
 
