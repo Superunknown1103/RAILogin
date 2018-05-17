@@ -72,6 +72,27 @@ $(document).ready(function(){
                 }
             });
         };
+
+
+        function fetchBillingInfo(){
+            var userInfo;
+            sessionStorage.setItem('userId', "sd");
+            var businessName = sessionStorage.getItem("userId");
+            var firebaseDB = firebase.database().ref(businessName);
+                firebaseDB.on('value', function(snapshot){
+                    userInfo = snapshot.val();
+                    console.log(userInfo.balance);
+            $('.balanceField').html(userInfo.balance);
+            $('.billField').html(userInfo.bill);
+            $('.descField').html(userInfo.description);
+            $('.emailField').html(userInfo.email);
+            $('.addressField').html(userInfo.fullAddress);
+            $('.nextField').html(userInfo.nextBillDate);
+            $('.phoneField').html(userInfo.phone);
+            $('.statusField').html(userInfo.status);
+            $('.zipField').html(userInfo.zip);
+                });
+        };
         
         // authenticate and redirect to video page
         function logInUser(email, password){
@@ -130,4 +151,10 @@ if (window.location.pathname == "/home.html") {
             userInfo = snapshot.val();
         });
     };
+
+    if (window.location.pathname == "/billing.html") {
+        fetchBillingInfo();
+        };
 });
+
+
