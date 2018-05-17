@@ -5,7 +5,13 @@
 .navBar {
     background-color: transparent;
     font-family: 'Nunito Sans', sans-serif;
-    left: -8%;
+    left: -20vw;
+}
+
+.navBar2 {
+    background-color: transparent;
+    font-family: 'Nunito Sans', sans-serif;
+    left: -10vw;
 }
 
 .RAIlogo {
@@ -83,7 +89,7 @@ input, .newUser {
     font-family: 'Nunito Sans', sans-serif;
     background-image: url("../lightbackground.jpg");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat cover;
 }
 
 .newUser {

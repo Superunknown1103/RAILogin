@@ -79,9 +79,9 @@ $(document).ready(function(){
             sessionStorage.setItem('userId', "sd");
             var businessName = sessionStorage.getItem("userId");
             var firebaseDB = firebase.database().ref(businessName);
-                firebaseDB.on('value', function(snapshot){
-                    userInfo = snapshot.val();
-                    console.log(userInfo.balance);
+            firebaseDB.on('value', function(snapshot){
+            userInfo = snapshot.val();
+            console.log(userInfo.balance);
             $('.balanceField').html(userInfo.balance);
             $('.billField').html(userInfo.bill);
             $('.descField').html(userInfo.description);
@@ -91,7 +91,7 @@ $(document).ready(function(){
             $('.phoneField').html(userInfo.phone);
             $('.statusField').html(userInfo.status);
             $('.zipField').html(userInfo.zip);
-                });
+            });
         };
         
         // authenticate and redirect to video page
@@ -155,6 +155,10 @@ if (window.location.pathname == "/home.html") {
     if (window.location.pathname == "/billing.html") {
         fetchBillingInfo();
         };
+
+    $('.returnHome').on("click", function(){
+        window.location.pathname = "/home.html";
+    });
 });
 
 
