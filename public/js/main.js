@@ -13,6 +13,7 @@ $(document).ready(function(){
 
       // creating new user
     $('#completed').click(function() {
+        debugger;
         var password = $('#newPass').val();
         var email = $('#email').val();
         var password2 = $('#newPassRepeat').val();
@@ -25,6 +26,7 @@ $(document).ready(function(){
         var bill = $('#bill').val();
         var balance = $('#balance').val();
         var nextBillDate = $('#nextBillDate').val();
+        var upload = $('#upload').val();
 
         if ((password == '') || (password2 == '') || (email == '')) {
             alert('Please fill out all fields!');
@@ -42,8 +44,8 @@ $(document).ready(function(){
                     }
                     }).then(function(){
                     sessionStorage.setItem('userId', businessName);
-                    createUser(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate);
-                    console.log(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate);
+                    createUser(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate);
+                    console.log(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate);
                     // setTimeout(function(){
                     // window.location.pathname = "/home.html"
                     // }, 3000);
@@ -76,7 +78,6 @@ $(document).ready(function(){
 
         function fetchBillingInfo(){
             var userInfo;
-            sessionStorage.setItem('userId', "sd");
             var businessName = sessionStorage.getItem("userId");
             var firebaseDB = firebase.database().ref(businessName);
             firebaseDB.on('value', function(snapshot){
@@ -110,7 +111,7 @@ $(document).ready(function(){
          };
 
  // Creating user in database
-function createUser(email, businessName, password, fullAddress, phone, zip, description, status, bill, balance, nextBillDate) {
+function createUser(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate) {
     var firebaseDB = firebase.database().ref();
     var businessInfo = 
     {
@@ -122,6 +123,7 @@ function createUser(email, businessName, password, fullAddress, phone, zip, desc
     DownloadLink1: "n/a",
     DownloadLink2: "n/a",
     // password: password,
+    upload: upload,
     fullAddress: fullAddress,
     phone: phone,
     zip: zip,
@@ -149,6 +151,10 @@ if (window.location.pathname == "/home.html") {
     var firebaseDB = firebase.database().ref(businessName);
         firebaseDB.on('value', function(snapshot){
             userInfo = snapshot.val();
+            console.log(userInfo);
+            var BusinessInfo = JSON.stringify(userInfo);
+            sessionStorage.setItem('BusinessInfo', BusinessInfo)
+            console.log(BusinessInfo);
         });
     };
 
@@ -161,4 +167,11 @@ if (window.location.pathname == "/home.html") {
     });
 });
 
+
+function upload(){
+ var Info = sessionStorage.getItem('BusinessInfo');
+ var parsedInfo = JSON.parse(Info);
+ var uploadLink = parsedInfo.upload;
+ window.open(uploadLink);
+}
 
