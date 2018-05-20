@@ -69,6 +69,8 @@ a {
     /* background-color: gray; */
     padding-top: 5%;
     padding-bottom: 30%;
+    width: 100%;
+    margin-left: -1vw;
 }
 
 input, .newUser {

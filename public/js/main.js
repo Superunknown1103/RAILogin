@@ -101,12 +101,12 @@ $(document).ready(function(){
             var errorCode = error.code;
             if (error.message) {
                 alert(error.message);
-                return;
+                window.location.reload();
             }
           }).then(function(){
             setTimeout(function(){
              window.location.pathname = "/home.html"
-                    }, 3000);
+                    }, 1000);
                 });
          };
 
@@ -132,7 +132,7 @@ function createUser(email, businessName, password, fullAddress, upload, phone, z
     bill: bill,
     balance: balance,
     nextBillDate: nextBillDate
-};
+    };
     // var user = sessionStorage.getItem('userId');
     firebaseDB.child(businessName).set(businessInfo).catch(function(error){
         if (error){
@@ -155,6 +155,23 @@ if (window.location.pathname == "/home.html") {
             var BusinessInfo = JSON.stringify(userInfo);
             sessionStorage.setItem('BusinessInfo', BusinessInfo)
             console.log(BusinessInfo);
+            // If DownloadLinks/HostedVideos are not null, enter them into the appropriate HTML.
+            if (userInfo.DownloadLink1 != ""){
+            $('.dl1').attr('href', userInfo.DownloadLink1);
+            } else {
+                alert("This download link is not ready or disabled.")
+            }
+            if (userInfo.DownloadLink2 != ""){
+            $('.dl2').attr('href', userInfo.DownloadLink2);
+            } else {
+                alert("This download link is not ready or disabled.")
+            };
+            if (userInfo.HostedVid1 != ""){
+            $('.vid1').attr('src', userInfo.HostedVid1);
+            };
+            if (userInfo.HostedVid2 != "") {
+            $('.vid2').attr('src', userInfo.HostedVid2);
+            };
         });
     };
 
@@ -165,13 +182,14 @@ if (window.location.pathname == "/home.html") {
     $('.returnHome').on("click", function(){
         window.location.pathname = "/home.html";
     });
+
 });
 
 
 function upload(){
- var Info = sessionStorage.getItem('BusinessInfo');
- var parsedInfo = JSON.parse(Info);
- var uploadLink = parsedInfo.upload;
- window.open(uploadLink);
+    var Info = sessionStorage.getItem('BusinessInfo');
+    var parsedInfo = JSON.parse(Info);
+    var uploadLink = parsedInfo.upload;
+    window.open(uploadLink);
 }
 
