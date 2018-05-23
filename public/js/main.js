@@ -13,12 +13,14 @@ $(document).ready(function(){
 
       // creating new user
     $('#completed').click(function() {
-        debugger;
+        var company = $('#businessName').val();
         var password = $('#newPass').val();
         var email = $('#email').val();
         var password2 = $('#newPassRepeat').val();
         var businessName = $('#businessName').val();
-        var fullAddress = $('#address').val();
+        var Address = $('#address').val();
+        var City = $('#city').val();
+        var State = $('#state').val();
         var phone = $('#phone').val();
         var zip = $('#zip').val();
         var description = $('#description').val();
@@ -44,8 +46,8 @@ $(document).ready(function(){
                     }
                     }).then(function(){
                     sessionStorage.setItem('userId', businessName);
-                    createUser(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate);
-                    console.log(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate);
+                    createUser(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate);
+                    console.log(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate);
                     // setTimeout(function(){
                     // window.location.pathname = "/home.html"
                     // }, 3000);
@@ -76,6 +78,11 @@ $(document).ready(function(){
         };
 
 
+        function RemoveVideosIfEmpty(){
+
+        }
+
+
         function fetchBillingInfo(){
             var userInfo;
             var businessName = sessionStorage.getItem("userId");
@@ -87,7 +94,9 @@ $(document).ready(function(){
             $('.billField').html(userInfo.bill);
             $('.descField').html(userInfo.description);
             $('.emailField').html(userInfo.email);
-            $('.addressField').html(userInfo.fullAddress);
+            $('.addressField').html(userInfo.Address);
+            $('.cityField').html(userInfo.city);
+            $('.stateField').html(userInfo.State);
             $('.nextField').html(userInfo.nextBillDate);
             $('.phoneField').html(userInfo.phone);
             $('.statusField').html(userInfo.status);
@@ -111,20 +120,23 @@ $(document).ready(function(){
          };
 
  // Creating user in database
-function createUser(email, businessName, password, fullAddress, upload, phone, zip, description, status, bill, balance, nextBillDate) {
+function createUser(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate) {
     var firebaseDB = firebase.database().ref();
     var businessInfo = 
     {
-    HostedVid1:"n/a", 
-    HostedVid2:"n/a", 
+    HostedVid1: "", 
+    HostedVid2: "",
     email: email,
+    businessName: businessName,
     allowedDownload: 'no',
     allowedHost: 'no',
-    DownloadLink1: "n/a",
-    DownloadLink2: "n/a",
+    DownloadLink1: "",
+    DownloadLink2: "",
     // password: password,
     upload: upload,
-    fullAddress: fullAddress,
+    Address: Address,
+    City: city,
+    State: State,
     phone: phone,
     zip: zip,
     description: description,
@@ -159,19 +171,29 @@ if (window.location.pathname == "/home.html") {
             if (userInfo.DownloadLink1 != ""){
             $('.dl1').attr('href', userInfo.DownloadLink1);
             } else {
-                alert("This download link is not ready or disabled.")
+              $('.dl1').css('visibility', 'hidden');
+              $('.underText').css('visibility', 'hidden');
             }
             if (userInfo.DownloadLink2 != ""){
             $('.dl2').attr('href', userInfo.DownloadLink2);
             } else {
-                alert("This download link is not ready or disabled.")
+                $('.dl2').css('visibility', 'hidden');
+                $('.underText').css('visibility', 'hidden');
             };
             if (userInfo.HostedVid1 != ""){
-            $('.vid1').attr('src', userInfo.HostedVid1);
+                $('.vid1').attr('src', userInfo.HostedVid1);
+            } else {
+                $('.vid1').css('visibility', 'hidden');
+                $('video').css('visibility', 'hidden');
+                $('.underText').css('visibility', 'hidden');
             };
             if (userInfo.HostedVid2 != "") {
-            $('.vid2').attr('src', userInfo.HostedVid2);
-            };
+                $('.vid2').attr('src', userInfo.HostedVid2);
+            } else {
+                $('.vid2').css('visibility', 'hidden');
+                $('video').css('visibility', 'hidden');
+                $('.underText').css('visibility', 'hidden');
+            }
         });
     };
 
@@ -183,6 +205,21 @@ if (window.location.pathname == "/home.html") {
         window.location.pathname = "/home.html";
     });
 
+
+    // Mod Pay
+$('.payBill').on('click', function(){
+    var Info = sessionStorage.getItem('BusinessInfo');
+    var parsedInfo = JSON.parse(Info);
+    var InvoiceNumber = getRandomInt(10000000).toString();
+    var CompanyName = parsedInfo.businessName;
+    var Address = parsedInfo.Address;
+    var City = parsedInfo.City;
+    var State = parsedInfo.State;
+    var Zip = parsedInfo.zip;
+    var url = "https://secure.modpay.com/vterm/vterm1.cfm?an&aml=15&clientcode=A5429478" + "&clientAcctNum=" + InvoiceNumber + "&companyName=" + CompanyName + "&address=" + Address + "&city=" + City + "&state=" + State + "&zipCode=" + Zip;
+    window.open(url);
+});
+
 });
 
 
@@ -193,3 +230,6 @@ function upload(){
     window.open(uploadLink);
 }
 
+function getRandomInt(max){
+	return Math.floor(Math.random() * Math.floor(max));
+}

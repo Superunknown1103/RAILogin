@@ -144,3 +144,7 @@ form a :hover {
 #completed {
     margin-left: -1vw;
 }
+
+.underText {
+    font-size: 20px !important;
+}
