@@ -167,32 +167,32 @@ if (window.location.pathname == "/home.html") {
             var BusinessInfo = JSON.stringify(userInfo);
             sessionStorage.setItem('BusinessInfo', BusinessInfo)
             console.log(BusinessInfo);
+            var newBusinessInfo = JSON.parse(BusinessInfo);
+            console.log(newBusinessInfo);
             // If DownloadLinks/HostedVideos are not null, enter them into the appropriate HTML.
-            if (userInfo.DownloadLink1 != ""){
-            $('.dl1').attr('href', userInfo.DownloadLink1);
+            if (newBusinessInfo.DownloadLink1 !== ""){
+            $('.dl1').attr('href', newBusinessInfo.DownloadLink1);
+            $('.underText').css('visibility', 'hidden');
             } else {
-              $('.dl1').css('visibility', 'hidden');
-              $('.underText').css('visibility', 'hidden');
+            $('.dl1').css('visibility', 'hidden');
+            $('.underText').css('visibility', 'visible');
             }
-            if (userInfo.DownloadLink2 != ""){
-            $('.dl2').attr('href', userInfo.DownloadLink2);
+            if (newBusinessInfo.DownloadLink2 !== ""){
+            $('.dl2').attr('href', newBusinessInfo.DownloadLink2);
             } else {
-                $('.dl2').css('visibility', 'hidden');
-                $('.underText').css('visibility', 'hidden');
+            $('.dl2').css('visibility', 'hidden');
             };
-            if (userInfo.HostedVid1 != ""){
-                $('.vid1').attr('src', userInfo.HostedVid1);
+            if (newBusinessInfo.HostedVid1 !== ""){
+            $('.vid1').attr('src', newBusinessInfo.HostedVid1);
             } else {
-                $('.vid1').css('visibility', 'hidden');
-                $('video').css('visibility', 'hidden');
-                $('.underText').css('visibility', 'hidden');
+            $('.vid1').css('visibility', 'hidden');
+            $('video').css('visibility', 'hidden');
             };
-            if (userInfo.HostedVid2 != "") {
-                $('.vid2').attr('src', userInfo.HostedVid2);
+            if (newBusinessInfo.HostedVid2 !== "") {
+            $('.vid2').attr('src', newBusinessInfo.HostedVid2);
             } else {
-                $('.vid2').css('visibility', 'hidden');
-                $('video').css('visibility', 'hidden');
-                $('.underText').css('visibility', 'hidden');
+            $('.vid2').css('visibility', 'hidden');
+            $('video').css('visibility', 'hidden');
             }
         });
     };
