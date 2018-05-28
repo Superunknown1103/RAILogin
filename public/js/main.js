@@ -37,18 +37,24 @@ $(document).ready(function(){
             if (password !== password2){
                 alert('Passwords do not match!')
             } else {
+                var Errx;
                 firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error){
                     // Handle Errors Here
                     var errorCode = error.code;
                     if (error.message) {
                     alert(error.message);
-                    return;
+                    var Errx = true;
                     }
                     }).then(function(){
+                    if (Errx = true){
+                        alert('User was not created.');
+                    } else {
                     sessionStorage.setItem('userId', businessName);
                     createUser(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate);
                     console.log(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate);
+                    };
                     // setTimeout(function(){
+                        
                     // window.location.pathname = "/home.html"
                     // }, 3000);
                 })
