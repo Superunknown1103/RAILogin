@@ -1,150 +1,155 @@
+
 .logoAreaBar {
-    background-color: white;
+   background-color: white;
 }
 
 .navBar {
-    background-color: transparent;
-    font-family: 'Nunito Sans', sans-serif;
-    left: -20vw;
+   background-color: transparent;
+   font-family: 'Nunito Sans', sans-serif;
+   left: -20vw;
 }
 
 .navBar2 {
-    background-color: transparent;
-    font-family: 'Nunito Sans', sans-serif;
-    left: -10vw;
+   background-color: transparent;
+   font-family: 'Nunito Sans', sans-serif;
+   left: -10vw;
 }
 
 .RAIlogo {
-    margin-top: 10%;
-    margin-left: 8%;
-    position: absolute;
+   margin-top: 10%;
+   margin-left: 8%;
+   position: absolute;
 }
 
 .navLink {
-    text-align: center;
-    color: #900313 !important;
-    top: 1%;
-    padding: 2%;
-    font-size: 25px;
-    border-radius: 50%;
-    cursor: pointer;
+   text-align: center;
+   color: #900313 !important;
+   top: 1%;
+   padding: 2%;
+   font-size: 25px;
+   border-radius: 50%;
+   cursor: pointer;
 }
 
 .navLink :hover {
-    text-decoration: underline;
+   text-decoration: underline;
 }
 
 a {
-    color: #900313 !important;
+   color: #900313 !important;
 }
 .homeNav {
-    background: #ECE9E6;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
-    border: 2px solid black;
+   background: #ECE9E6;  /* fallback for old browsers */
+   background: -webkit-linear-gradient(to left, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+   background: linear-gradient(to left, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+   border: 2px solid black;
 }
 
 .n2 {
-    margin-left: -5%;
+   margin-left: -5%;
 }
 
 .n3 {
-    text-align: right !important;
-    left: 25%;
+   text-align: right !important;
+   left: 25%;
 }
 
 .n3fix {
-    margin-right: -6%;
+   margin-right: -6%;
 }
 
 .customerLogin {
-    text-align: center; 
-    font-size: 40px;
-    font-weight: bold;
-    margin-top: 5%;
+   text-align: center; 
+   font-size: 40px;
+   font-weight: bold;
+   margin-top: 5%;
 }
 
 .loginBox {
-    font-size: 20px !important;
-    /* background-color: gray; */
-    padding-top: 5%;
-    padding-bottom: 30%;
-    width: 100%;
-    margin-left: -1vw;
+   font-size: 20px !important;
+   /* background-color: gray; */
+   padding-top: 5%;
+   padding-bottom: 30%;
+   width: 100%;
+   margin-left: -1vw;
 }
 
 input, .newUser {
-    margin-top: 2%;
-    padding: 2px;
+   margin-top: 2%;
+   padding: 2px;
 }
 
 .indexBody {
-    font-family: 'Nunito Sans', sans-serif;
-    background-image: url("../backgroundlogin.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: left 5vw top;
-    background-color: #F8F9FD;
+   font-family: 'Nunito Sans', sans-serif;
+   background-image: url("../backgroundlogin.jpg");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: left 5vw top;
+   background-color: #F8F9FD;
 }
 
 .homeBody {
-    font-family: 'Nunito Sans', sans-serif;
-    background-image: url("../lightbackground.jpg");
-    background-size: 100%;
-    background-repeat: no-repeat cover;
+   font-family: 'Nunito Sans', sans-serif;
+   background-image: url("../lightbackground.jpg");
+   background-size: 100%;
+   background-repeat: no-repeat cover;
 }
 
 .newUser {
-    font-size: 20px !important;
-    cursor: pointer;
+   font-size: 20px !important;
+   cursor: pointer;
 }
 
 .downloadLink {
-    font-size: 20px !important;
-    margin-top: 2%;
+   font-size: 20px !important;
+   margin-top: 2%;
 }
 
 .submitA {
-    margin-top: 2%;
-    cursor: pointer;
+   margin-top: 2%;
+   cursor: pointer;
 }
 
 form label {
-        display: inline-block;
-        width:  10vw;
-        text-align: right;
-        margin-right: 1vw;
-        margin-left: -10.5vw;
+       display: inline-block;
+       width:  10vw;
+       text-align: right;
+       margin-right: 1vw;
+       margin-left: -10.5vw;
 }
 
 .generate label {
-    display: inline-block;
-    width:  10vw;
-    text-align: right;
-    margin-right: 1vw;
-    margin-left: -10.5vw;
+   display: inline-block;
+   width:  10vw;
+   text-align: right;
+   margin-right: 1vw;
+   margin-left: -10.5vw;
 }
 
 form a {
-    margin-left: -1vw;
+   margin-left: -1vw;
 }
 
 .generate a {
-    margin-left: -1vw;
+   margin-left: -1vw;
 }
 
 form a :hover {
-    text-decoration: underline;
+   text-decoration: underline;
 }
 
 .generate a :hover {
-    text-decoration: underline;
+   text-decoration: underline;
 }
 
 #completed {
-    margin-left: -1vw;
+   margin-left: -1vw;
 }
 
 .underText {
-    font-size: 20px !important;
+   font-size: 20px !important;
+}
+
+.billingPage .col-xs-6 {
+    text-align: left !important;
 }
