@@ -1,15 +1,22 @@
 $(document).ready(function(){
 
-        // firebase configuration
-    var config = {
-        apiKey: "AIzaSyClzWbBCXJB1Fni8HnIhjtzaV8mf5E5jOw",
-        authDomain: "railogin-cb34b.firebaseapp.com",
-        databaseURL: "https://railogin-cb34b.firebaseio.com",
-        projectId: "railogin-cb34b",
-        storageBucket: "railogin-cb34b.appspot.com",
-        messagingSenderId: "58650909091"
-      };
-      firebase.initializeApp(config);
+    // firebase configuration
+var config = {
+    apiKey: "AIzaSyClzWbBCXJB1Fni8HnIhjtzaV8mf5E5jOw",
+    authDomain: "railogin-cb34b.firebaseapp.com",
+    databaseURL: "https://railogin-cb34b.firebaseio.com",
+    projectId: "railogin-cb34b",
+    storageBucket: "railogin-cb34b.appspot.com",
+    messagingSenderId: "58650909091"
+  };
+
+  firebase.initializeApp(config);
+
+
+    setTimeout(function(){
+        window.location.pathname = "/home.html"
+                }, 1000);
+ 
 
       // creating new user
     $('#completed').click(function() {
@@ -62,14 +69,16 @@ $(document).ready(function(){
             }
         });
 
-        // Logging user In
+        Logging user In
         $('.submitA').click(function(){
-            var businessName = $('.frontBus').val();
+            var email = $('.frontBus').val();
             sessionStorage.setItem('userId', businessName)
             fetchEmailfromFirebase(businessName);
         });
 
-        // get user email for authentication based on business Name
+  
+
+        get user email for authentication based on business Name
         function fetchEmailfromFirebase(businessName){
             var firebaseDB = firebase.database().ref(businessName + '/email');
             firebaseDB.on('value', function(snapshot){
@@ -124,8 +133,8 @@ $(document).ready(function(){
                     }, 1000);
                 });
          };
-
- // Creating user in database
+    });
+ Creating user in database
 function createUser(email, businessName, password, Address, city, State, upload, phone, zip, description, status, bill, balance, nextBillDate) {
     var firebaseDB = firebase.database().ref();
     var businessInfo = 
